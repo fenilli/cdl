@@ -8,7 +8,21 @@ export type DiagnosticCode =
   | "parse/expected"
   | "parse/unexpected-token"
   | "parse/unexpected-type"
-  | "parse/unclosed-block";
+  | "parse/unclosed-block"
+  | "analysis/unknown-property"
+  | "analysis/misplaced-property"
+  | "analysis/misplaced-declaration"
+  | "analysis/duplicate-property"
+  | "analysis/duplicate-name"
+  | "analysis/duplicate-short"
+  | "analysis/invalid-short"
+  | "analysis/unknown-type"
+  | "analysis/invalid-type"
+  | "analysis/redundant-optional"
+  | "analysis/reserved-flag-type"
+  | "analysis/reserved-command-name"
+  | "analysis/version-without-metadata"
+  | "analysis/argument-order";
 
 export interface Diagnostic {
   readonly severity: Severity;

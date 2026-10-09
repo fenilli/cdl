@@ -14,7 +14,7 @@ option help: boolean {
 command clone {
   argument repository: string
 
-  argument directory: path? {
+  argument directory: string? {
     description "directory to clone into"
   }
 
@@ -27,7 +27,7 @@ command clone {
 command add {
   description "add file contents to the index"
 
-  argument paths: path[] {
+  argument paths: string[] {
     description "files to stage"
   }
 
