@@ -1,14 +1,17 @@
+import type { Schema } from "@schema";
 import { hasErrors, mergeDiagnostics, type Diagnostic } from "./diagnostics";
 import { SourceFile } from "./source";
 import type { Root } from "./syntax/ast";
 import { Lexer } from "./syntax/lexer";
 import { Parser } from "./syntax/parser";
 import { Analyzer, CommandSymbol } from "./analysis";
+import { lower } from "./lower";
 
 export interface CompileResult {
   readonly source: SourceFile;
   readonly root: Root;
   readonly symbols: CommandSymbol;
+  readonly schema: Schema | undefined;
   readonly diagnostics: Diagnostic[];
   readonly ok: boolean;
 }
@@ -19,5 +22,7 @@ export function compile(name: string, text: string): CompileResult {
   const parsed = new Parser(source, lexed.tokens).parse();
   const analyzed = new Analyzer().analyze(parsed.root);
   const diagnostics = mergeDiagnostics(lexed.diagnostics, parsed.diagnostics, analyzed.diagnostics);
-  return { source, root: parsed.root, symbols: analyzed.symbols, diagnostics, ok: !hasErrors(diagnostics) };
+  const ok = !hasErrors(diagnostics);
+  const schema = ok ? lower(analyzed.symbols) : undefined;
+  return { source, root: parsed.root, symbols: analyzed.symbols, schema, diagnostics, ok };
 }

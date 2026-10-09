@@ -7,3 +7,9 @@ export { Lexer, type LexResult } from "./syntax/lexer";
 
 export * from "./syntax/ast";
 export { Parser, type ParseResult } from "./syntax/parser";
+
+export * from "./analysis";
+
+export * from "./lower";
+
+export * from "./emit";

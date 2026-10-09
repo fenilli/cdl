@@ -20,7 +20,8 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "build": "tsdown",
-    "cdlc:check": "tsx src/cdlc/check.ts"
+    "cdlc:check": "tsx src/cdlc/check.ts",
+    "cdlc:build": "tsx src/cdlc/build.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.4",
