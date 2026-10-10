@@ -5,7 +5,7 @@ import {
   type OptionSchema,
   type Schema,
   type ValueType,
-} from "@schema";
+} from "@schema/index";
 import type { Property, TypeRef } from "@compiler/syntax/ast";
 import { RESERVED_FLAGS, type ReservedFlag, type CommandSymbol, type TypedSymbol, isBuiltinType } from "@compiler/analysis";
 

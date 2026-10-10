@@ -1,4 +1,4 @@
-import { VALUE_TYPES, type ValueType } from "@schema";
+import { VALUE_TYPES, type ValueType } from "@schema/index";
 import type { TypeRef } from "@compiler/syntax/ast";
 
 export const BUILTIN_TYPES = VALUE_TYPES;

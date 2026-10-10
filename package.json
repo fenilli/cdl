@@ -16,12 +16,33 @@
   ],
   "author": "Luiz Gustavo Siqueira Fenilli<gustavofenilli@gmail.com>",
   "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    },
+    "./compiler": {
+      "types": "./dist/compiler.d.mts",
+      "default": "./dist/compiler.mjs"
+    },
+    "./schema": {
+      "types": "./dist/schema.d.mts",
+      "default": "./dist/schema.mjs"
+    }
+  },
+  "bin": {
+    "cdlc": "./dist/cdlc.mjs"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "build": "tsdown",
-    "cdlc:check": "tsx src/cdlc/check.ts",
-    "cdlc:build": "tsx src/cdlc/build.ts"
+    "cdlc": "tsx src/cdlc/index.ts",
+    "gen:cli": "tsx scripts/gen-cli.ts",
+    "verify:cli": "tsx scripts/verify-cli.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.4",

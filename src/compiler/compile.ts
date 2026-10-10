@@ -1,4 +1,4 @@
-import type { Schema } from "@schema";
+import type { Schema } from "@schema/index";
 import { hasErrors, mergeDiagnostics, type Diagnostic } from "./diagnostics";
 import { SourceFile } from "./source";
 import type { Root } from "./syntax/ast";

@@ -1,4 +1,4 @@
-import type { ShortCircuit } from "@schema";
+import type { ShortCircuit } from "@schema/index";
 
 export interface ReservedFlag {
   readonly name: ShortCircuit;

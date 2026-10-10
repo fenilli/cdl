@@ -1,4 +1,4 @@
-import { commandKey } from "@schema";
+import { commandKey } from "@schema/index";
 
 export function ancestry(path: readonly string[]): string[] {
   const keys: string[] = [];

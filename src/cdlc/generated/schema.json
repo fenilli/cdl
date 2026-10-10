@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "root": {
+    "name": "",
+    "properties": {
+      "name": "cdlc",
+      "description": "compiler for cdl command definition files",
+      "version": "0.1.0"
+    },
+    "options": [
+      {
+        "name": "help",
+        "type": "boolean",
+        "list": false,
+        "properties": {
+          "description": "show help",
+          "short": "h"
+        },
+        "shortCircuit": "help"
+      },
+      {
+        "name": "version",
+        "type": "boolean",
+        "list": false,
+        "properties": {
+          "description": "show the version"
+        },
+        "shortCircuit": "version"
+      }
+    ],
+    "arguments": [],
+    "commands": [
+      {
+        "name": "check",
+        "properties": {
+          "description": "check a definition file for errors without writing anything"
+        },
+        "options": [
+          {
+            "name": "ast",
+            "type": "boolean",
+            "list": false,
+            "properties": {
+              "description": "print the syntax tree as JSON"
+            }
+          },
+          {
+            "name": "help",
+            "type": "boolean",
+            "list": false,
+            "properties": {
+              "description": "show help",
+              "short": "h"
+            },
+            "shortCircuit": "help"
+          }
+        ],
+        "arguments": [
+          {
+            "name": "file",
+            "type": "string",
+            "list": false,
+            "required": true,
+            "properties": {
+              "description": "the definition file"
+            }
+          }
+        ],
+        "commands": []
+      },
+      {
+        "name": "build",
+        "properties": {
+          "description": "compile a definition file to schema.json and schema.d.ts"
+        },
+        "options": [
+          {
+            "name": "out",
+            "type": "string",
+            "list": false,
+            "properties": {
+              "short": "o",
+              "description": "output directory (default: the current directory)"
+            }
+          },
+          {
+            "name": "help",
+            "type": "boolean",
+            "list": false,
+            "properties": {
+              "description": "show help",
+              "short": "h"
+            },
+            "shortCircuit": "help"
+          }
+        ],
+        "arguments": [
+          {
+            "name": "file",
+            "type": "string",
+            "list": false,
+            "required": true,
+            "properties": {
+              "description": "the definition file"
+            }
+          }
+        ],
+        "commands": []
+      }
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-import type { ShortCircuit } from "@schema";
+import type { ShortCircuit } from "@schema/index";
 import type { UsageError } from "./errors";
 import { tokenize, type ArgvToken } from "./argv";
 import type { ArgumentDef, CommandIndex, OptionDef, RuntimeSchema } from "./schema-index";

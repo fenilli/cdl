@@ -5,7 +5,7 @@ import {
   type OptionSchema,
   type Schema,
   type ValueType,
-} from "@schema";
+} from "@schema/index";
 
 const TS_TYPES: Readonly<Record<ValueType, string>> = {
   string: "string",

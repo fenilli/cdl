@@ -1,4 +1,4 @@
-import { commandKey, type CommandSchema } from "@schema";
+import { commandKey, type CommandSchema } from "@schema/index";
 import type { UsageError } from "./errors";
 import { ChainHooks, OverrideHooks } from "./hooks";
 import { flatten, loadSchema, type CommandIndex, type RuntimeSchema } from "./schema-index";
@@ -17,7 +17,7 @@ export interface SchemaTypes {
 
 export type CommandPath<S extends SchemaTypes> = Extract<keyof S["commands"], string>;
 
-export interface Payload<S extends SchemaTypes, K extends CommandPath<S>, C> {
+export interface Payload<S extends SchemaTypes, K extends CommandPath<S>, C> extends Output {
   readonly key: K;
   readonly path: readonly string[];
   readonly args: S["commands"][K]["args"];
@@ -109,7 +109,7 @@ export class CLI<S extends SchemaTypes, C = undefined> {
     }
   }
 
-  ok<K extends CommandPath<S>>(key: K, handler: Handler<S, K, C>): this {
+  on<K extends CommandPath<S>>(key: K, handler: Handler<S, K, C>): this {
     this.handlers.set(this.known(key), handler);
     return this;
   }
@@ -188,12 +188,14 @@ export class CLI<S extends SchemaTypes, C = undefined> {
       options: result.options,
       properties: command.properties,
       context: this.context,
+      ...this.output(),
     };
+
     return this.guarded(path, async () => {
       for (const before of this.befores.chain(path)) await before(payload);
-      await handler(payload);
+      const code = await handler(payload);
       for (const after of this.afters.chain(path).reverse()) await after(payload);
-      return 0;
+      return typeof code === "number" ? code : 0;
     });
   }
 

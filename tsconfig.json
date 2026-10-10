@@ -14,8 +14,11 @@
       "@compiler/*": [
         "./src/compiler/*"
       ],
-      "@schema": [
-        "./src/schema/index.ts"
+      "@schema/*": [
+        "./src/schema/*"
+      ],
+      "@runtime/*": [
+        "./src/runtime/*"
       ]
     },
     "resolveJsonModule": true,
@@ -30,5 +33,6 @@
   },
   "include": [
     "src",
+    "scripts"
   ]
 }

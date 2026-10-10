@@ -1,0 +1,28 @@
+name "cdlc"
+description "compiler for cdl command definition files"
+version "0.1.0"
+
+command check {
+  description "check a definition file for errors without writing anything"
+
+  argument file: string {
+    description "the definition file"
+  }
+
+  option ast: boolean {
+    description "print the syntax tree as JSON"
+  }
+}
+
+command build {
+  description "compile a definition file to schema.json and schema.d.ts"
+
+  argument file: string {
+    description "the definition file"
+  }
+
+  option out: string {
+    short "o"
+    description "output directory (default: the current directory)"
+  }
+}

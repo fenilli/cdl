@@ -3,7 +3,7 @@ import {
   type CommandSchema,
   type Schema,
   type ShortCircuit
-} from "@schema";
+} from "@schema/index";
 
 export interface OptionDef {
   readonly name: string;
@@ -47,7 +47,7 @@ export function loadSchema(input: unknown): RuntimeSchema {
   const schema = input as Schema;
   if ((schema.version as number) !== SCHEMA_VERSION) {
     throw new Error(
-      `unsupported schema version ${String(schema.version)}; this runtie reads version ${SCHEMA_VERSION}`
+      `unsupported schema version ${String(schema.version)}; this runtime reads version ${SCHEMA_VERSION}`
     );
   }
 
@@ -55,7 +55,7 @@ export function loadSchema(input: unknown): RuntimeSchema {
 }
 
 export function flatten(root: CommandIndex): CommandIndex[] {
-  return [root, ...[...root.commands.values()]].flatMap(flatten);
+  return [root, ...[...root.commands.values()].flatMap(flatten)];
 }
 
 function indexCommand(command: CommandSchema, path: readonly string[]): CommandIndex {
