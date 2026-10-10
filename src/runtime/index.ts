@@ -3,8 +3,8 @@ export { loadSchema, type CommandIndex, type RuntimeSchema } from "./schema-inde
 export { ArgvParser, type ParseResult, type Value } from "./parse";
 export { renderHelp } from "./help";
 export {
-  CLI,
-  type CLIOptions,
+  CDL,
+  type CDLOptions,
   type CommandPath,
   type ErrorPayload,
   type Handler,

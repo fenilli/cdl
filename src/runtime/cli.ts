@@ -75,7 +75,7 @@ export interface IO {
   err(text: string): void;
 }
 
-export interface CLIOptions<C> {
+export interface CDLOptions<C> {
   readonly context?: C;
   readonly io?: IO;
 }
@@ -87,7 +87,7 @@ const processIO: IO = {
 
 type Loose = (payload: any) => unknown;
 
-export class CLI<S extends SchemaTypes, C = undefined> {
+export class CDL<S extends SchemaTypes, C = undefined> {
   private readonly schema: RuntimeSchema;
   private readonly commands = new Map<string, CommandIndex>();
   private readonly context: C;
@@ -100,7 +100,7 @@ export class CLI<S extends SchemaTypes, C = undefined> {
   private readonly errorHooks = new OverrideHooks<Loose>();
   private versionHook: Loose | undefined;
 
-  constructor(schema: unknown, options: CLIOptions<C>) {
+  constructor(schema: unknown, options: CDLOptions<C>) {
     this.schema = loadSchema(schema);
     this.context = options.context as C;
     this.io = options.io ?? processIO;
